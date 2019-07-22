@@ -1,0 +1,34 @@
+package com.bdd.cicddemo.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import static org.springframework.util.Assert.notNull;
+import static org.springframework.util.StringUtils.isEmpty;
+
+@RestController
+@RequestMapping
+public class Login {
+
+    @GetMapping("/login")
+    public String add(com.bdd.cicddemo.dto.Login login) {
+
+        if(isEmpty(login.getUsername())){
+            System.out.println("Username cannot be empty");
+            return "Username cannot be empty";
+        } else
+            System.out.println("Username is "+login.getUsername());
+
+        if(isEmpty(login.getPassword())) {
+            System.out.println("password cannot be empty");
+            return "Password cannot be empty";
+        } else
+            System.out.println("Password is "+login.getPassword());
+
+
+        if(login.getUsername().equals(login.getPassword()))
+            return "Login Successful";
+
+        return "User not found";
+    }
+}

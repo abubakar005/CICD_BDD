@@ -1,0 +1,32 @@
+'use strict'
+
+var module = angular.module('demo.controllers', []);
+module.controller("UserController", [ "$scope", "UserService","$http",
+		function($scope, UserService,$http) {
+
+			$scope.login = function() {
+				/*UserService.login($scope.loginDTO).then(function(data) {
+					console.log("works");
+
+                    window.location.href = "/success";
+                }).catch(function(reason) {
+					console.log("error occured");
+                    // window.location.href = "/my-error";
+                });*/
+                $http({
+                    method: 'GET',
+                    url: 'http://localhost:8090/login?username=username&password=password'
+
+                }).then(function successCallback(response) {
+
+                    $scope.users = response.data;
+
+                }, function errorCallback(response) {
+
+                    alert("Error. Try Again!");
+
+                });
+			}
+
+
+		} ]);
