@@ -66,6 +66,6 @@ public class LoginStepDefinitions {
     public void the_client_receives_result(String result) {
         System.out.println("the client receives result: " + result);
         //throw new cucumber.api.PendingException();
-        assertEquals("Login Successful", result);
+        assertEquals("Login Successfully", result);
     }
 }
