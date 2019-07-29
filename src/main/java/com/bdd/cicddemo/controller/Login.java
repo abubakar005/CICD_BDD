@@ -12,17 +12,18 @@ import static org.springframework.util.StringUtils.isEmpty;
 @RequestMapping
 public class Login {
 
+    //@GetMapping("cicddemo-bdd/")
     @GetMapping("/login")
     public ResponseEntity<LoginResponse> add(com.bdd.cicddemo.dto.Login login) {
 
         if(isEmpty(login.getUsername())){
-            System.out.print("Username cannot be empty");
+            System.out.println("Username cannot be empty");
             return ResponseEntity.ok(new LoginResponse("Username cannot be empty"));
         } else
             System.out.println("Username is " + login.getUsername());
 
         if(isEmpty(login.getPassword())) {
-            System.out.print("password cannot be empty");
+            System.out.println("password cannot be empty");
             return ResponseEntity.ok(new LoginResponse("Password cannot be empty"));
         } else
             System.out.println("Password is " + login.getPassword());

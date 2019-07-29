@@ -3,6 +3,9 @@ package com.bdd.cicddemo.test;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.client.RestTemplate;
 
 import static org.junit.Assert.assertEquals;
@@ -10,10 +13,18 @@ import static org.junit.Assert.assertEquals;
 public class LoginStepDefinitions {
 
     protected RestTemplate restTemplate = new RestTemplate();
-    protected final String DEFAULT_URL = "http://localhost:8090/";
+    protected final String DEFAULT_URL = "http://localhost:7788/";
 
     String response = "";
+    //String url = DEFAULT_URL + "cicddemo-bdd/";
     String url = DEFAULT_URL + "login";
+
+    //@Autowired
+    //Environment environment;
+    //String port = environment.getProperty("server.port");
+
+    @Value("${server.port}")
+    private String serverPort;
 
     @Given("^username is empty$")
     public void the_client_calls_login_without_username() {
@@ -21,7 +32,9 @@ public class LoginStepDefinitions {
     }
 
     @When("the client calls login with password {string}")
-    public void the_client_calls_login_with_password(String password) {
+    public void the_client_calls_login_withsq_password(String password) {
+        //System.out.println("=====port: " + port);
+        System.out.println("=====serverPort: " + "${server.port}");
         System.out.println("the client calls login with password: " + password);
         response = restTemplate.getForObject(url  + "?password="+password, String.class);
     }
