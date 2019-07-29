@@ -12,7 +12,8 @@ module.controller("UserController", [ "$scope", "UserService","$http",
                 $http({
                     method: 'GET',
                    // url: 'http://localhost:7788/cicddemo-bdd/',
-                    url: 'http://localhost:7788/login',
+                   // url: 'http://localhost:7788/login',
+                    url: location.href+'/login',
                     params: params,
                     header: {
                         'Content-Type' : 'application/json'
@@ -22,15 +23,18 @@ module.controller("UserController", [ "$scope", "UserService","$http",
 
                     console.log(response);
                     if(response.data.response ==='Login Successful') {
-                        window.location.href = "/success";
+                     //   window.location.href = "/success";
+                        window.location.href = location.href+"success";
                        // window.location.href = "http://localhost:7788/cicddemo-bdd/success";
                     } else {
-                        window.location.href = "/my-error";
+                     //   window.location.href = "/my-error";
+                        window.location.href = location.href+"my-error";
                        // window.location.href = "http://localhost:7788/cicddemo-bdd/my-error";
                     }
                 }).catch(function (reason) {
                     console.log("error occurred");
-                    window.location.href = "/my-error";
+                    //window.location.href = "/my-error";
+                    window.location.href = location.href+"my-error";
                    // window.location.href = "http://localhost:7788/cicddemo-bdd/my-error";
                 });
 			}
