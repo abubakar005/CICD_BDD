@@ -12,7 +12,7 @@
 	<artifactId>cicddemo</artifactId>
 	<version>bdd</version>
 	<name>cicddemo</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Demo project for Spring Boot test</description>
 
 	<packaging>war</packaging>
 	<properties>
